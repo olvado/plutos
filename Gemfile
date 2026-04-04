@@ -13,7 +13,7 @@ gem "shakapacker", "~> 8.0"
 gem "graphql", "~> 2.3"
 
 # Authentication & Authorization
-gem "devise", "~> 4.9"
+gem "devise", "~> 5.0"
 gem "pundit", "~> 2.4"
 
 # Materialized views
