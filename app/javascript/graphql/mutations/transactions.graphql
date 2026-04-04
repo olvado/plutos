@@ -1,0 +1,43 @@
+mutation CreateTransaction($input: CreateTransactionInput!) {
+  createTransaction(input: $input) {
+    transaction {
+      id
+      type
+      description
+      amount
+      date
+    }
+    errors
+  }
+}
+
+mutation UpdateTransaction($input: UpdateTransactionInput!) {
+  updateTransaction(input: $input) {
+    transaction {
+      id
+      type
+      description
+      amount
+      date
+    }
+    errors
+  }
+}
+
+mutation DeleteTransaction($input: DeleteTransactionInput!) {
+  deleteTransaction(input: $input) {
+    success
+    errors
+  }
+}
+
+mutation UpdateProfile($input: UpdateProfileInput!) {
+  updateProfile(input: $input) {
+    user {
+      id
+      name
+      email
+    }
+    errors
+  }
+}

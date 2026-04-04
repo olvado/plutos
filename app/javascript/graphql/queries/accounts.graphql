@@ -1,0 +1,70 @@
+query GetAccounts {
+  accounts {
+    id
+    name
+    accountType
+    accountNumber
+    sortCode
+    dateOpened
+    dateClosed
+    balance {
+      totalDeposits
+      totalWithdrawals
+      totalVariance
+      totalInterest
+      balance
+    }
+  }
+}
+
+query GetAccount($id: Int!) {
+  account(id: $id) {
+    id
+    name
+    accountType
+    accountNumber
+    sortCode
+    dateOpened
+    dateClosed
+    transactions {
+      id
+      type
+      description
+      amount
+      date
+    }
+    balance {
+      totalDeposits
+      totalWithdrawals
+      totalVariance
+      totalInterest
+      balance
+    }
+    monthlySummaries {
+      month
+      deposits
+      withdrawals
+      variance
+      interest
+      netChange
+    }
+  }
+}
+
+query GetMe {
+  me {
+    id
+    name
+    email
+  }
+}
+
+query GetTransactions($accountId: Int!, $type: TransactionTypeEnum, $from: ISO8601DateTime, $to: ISO8601DateTime) {
+  transactions(accountId: $accountId, type: $type, from: $from, to: $to) {
+    id
+    type
+    description
+    amount
+    date
+  }
+}
