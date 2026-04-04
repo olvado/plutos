@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_04_015050) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_04_015320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -51,4 +51,88 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_04_015050) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "transactions", "accounts"
+
+  create_view "account_balances", materialized: true, sql_definition: <<-SQL
+      SELECT accounts.id AS account_id,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Deposit'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS total_deposits,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Withdrawal'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS total_withdrawals,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Variance'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS total_variance,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Interest'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS total_interest,
+      (((COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Deposit'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) - COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Withdrawal'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric)) + COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Variance'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric)) + COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Interest'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric)) AS balance
+     FROM (accounts
+       LEFT JOIN transactions ON ((transactions.account_id = accounts.id)))
+    GROUP BY accounts.id;
+  SQL
+  add_index "account_balances", ["account_id"], name: "index_account_balances_on_account_id", unique: true
+
+  create_view "account_monthly_summaries", materialized: true, sql_definition: <<-SQL
+      SELECT accounts.id AS account_id,
+      date_trunc('month'::text, transactions.date) AS month,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Deposit'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS deposits,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Withdrawal'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS withdrawals,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Variance'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS variance,
+      COALESCE(sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Interest'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END), (0)::numeric) AS interest,
+      sum(
+          CASE
+              WHEN ((transactions.type)::text = 'Deposit'::text) THEN transactions.amount
+              WHEN ((transactions.type)::text = 'Withdrawal'::text) THEN (- transactions.amount)
+              WHEN ((transactions.type)::text = 'Variance'::text) THEN transactions.amount
+              WHEN ((transactions.type)::text = 'Interest'::text) THEN transactions.amount
+              ELSE (0)::numeric
+          END) AS net_change
+     FROM (accounts
+       JOIN transactions ON ((transactions.account_id = accounts.id)))
+    GROUP BY accounts.id, (date_trunc('month'::text, transactions.date))
+    ORDER BY accounts.id, (date_trunc('month'::text, transactions.date));
+  SQL
+  add_index "account_monthly_summaries", ["account_id", "month"], name: "index_account_monthly_summaries_on_account_id_and_month", unique: true
+
 end
