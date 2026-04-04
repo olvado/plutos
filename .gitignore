@@ -13,6 +13,7 @@
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
+tmp*
 !/log/.keep
 !/tmp/.keep
 
@@ -38,3 +39,6 @@ yarn-debug.log*
 **/generated/**
 ssr-generated
 .env
+
+plutos.md
+.claude/

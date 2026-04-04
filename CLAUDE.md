@@ -22,3 +22,5 @@ Plutos is a simple wealth trackerand visualisation tool for savings, Individual 
 - Follow best practices for code quality, including writing clean, maintainable code, adhering to the project's coding standards, and ensuring that all code is properly tested with unit and integration tests.
 
 - Always ask questions if you are unsure about any aspect of the implementation, whether it's related to technical details, security considerations, or user experience. It's better to ask for clarification than to make assumptions that could lead to issues down the line.
+
+- Always wait until a phase PR is merge (manually by me) before starting the next phase, to ensure that the implementation is done in a structured and organized manner, and that each phase builds upon the previous one without conflicts or issues.
