@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_04_04_020731) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_04_021407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -48,7 +48,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_04_04_020731) do
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["amount"], name: "index_transactions_on_amount"
     t.index ["date"], name: "index_transactions_on_date"
-    t.index ["description"], name: "index_transactions_on_description"
     t.index ["type"], name: "index_transactions_on_type"
   end
 
