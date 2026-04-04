@@ -6,7 +6,12 @@
   "babel": {
     "presets": [
       "./node_modules/shakapacker/package/babel/preset.js",
-      ["@babel/preset-react", { "runtime": "automatic" }],
+      [
+        "@babel/preset-react",
+        {
+          "runtime": "automatic"
+        }
+      ],
       "@babel/preset-typescript"
     ]
   },
@@ -39,7 +44,7 @@
     "react-on-rails": "16.5.1",
     "react-router-dom": "^7.14.0",
     "recharts": "^3.8.1",
-    "shakapacker": "8.4.0",
+    "shakapacker": "^9.7.0",
     "style-loader": "4.0.0",
     "terser-webpack-plugin": "^5.4.0",
     "typescript": "^6.0.2",
