@@ -30,8 +30,8 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Ruby gems
-COPY vendor/* ./vendor/
 COPY Gemfile Gemfile.lock ./
+COPY vendor/ ./vendor/
 
 RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
