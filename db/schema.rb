@@ -10,8 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 0) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_04_015050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
+  # Custom types defined in this database.
+  # Note that some types may not work with other database engines. Be careful if changing database.
+  create_enum "account_type", ["savings", "cash_isa", "investment_isa", "lifetime_isa"]
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "account_number"
+    t.string "account_type"
+    t.datetime "created_at", null: false
+    t.datetime "date_closed"
+    t.datetime "date_opened"
+    t.string "name"
+    t.string "sort_code"
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.decimal "amount"
+    t.datetime "created_at", null: false
+    t.datetime "date"
+    t.string "description"
+    t.string "type"
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_transactions_on_account_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email"
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "accounts", "users"
+  add_foreign_key "transactions", "accounts"
 end
