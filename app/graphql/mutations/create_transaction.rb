@@ -11,9 +11,13 @@ module Mutations
     field :transaction, Types::TransactionType, null: true
     field :errors, [ String ], null: false
 
+    ALLOWED_TYPES = %w[Deposit Withdrawal Variance Interest].freeze
+
     def resolve(account_id:, type:, amount:, date:, description: nil)
       account = Account.find(account_id)
       authorize_account!(account)
+
+      raise GraphQL::ExecutionError, "Invalid transaction type" unless ALLOWED_TYPES.include?(type)
 
       transaction = type.constantize.new(
         account: account,
