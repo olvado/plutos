@@ -24,3 +24,5 @@ Plutos is a simple wealth tracker and visualisation tool for savings, Individual
 - Always ask questions if you are unsure about any aspect of the implementation, whether it's related to technical details, security considerations, or user experience. It's better to ask for clarification than to make assumptions that could lead to issues down the line.
 
 - Always wait until a phase PR is merge (manually by me) before starting the next phase, to ensure that the implementation is done in a structured and organized manner, and that each phase builds upon the previous one without conflicts or issues.
+
+- Never commit or push code directly to main branch, all changes should go through the pull request process for review and merging.
