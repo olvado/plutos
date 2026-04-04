@@ -5,7 +5,7 @@ import { system } from "./theme";
 const App: React.FC = () => {
   return (
     <ChakraProvider value={system}>
-      <Box minH="100vh" display="flex" alignItems="center" justifyContent="center">
+      <Box as="main" minH="100vh" display="flex" alignItems="center" justifyContent="center">
         <VStack gap={4}>
           <Heading size="2xl">Plutos</Heading>
           <Text fontSize="lg" color="fg.muted">
