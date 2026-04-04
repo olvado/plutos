@@ -1,6 +1,6 @@
 class TransactionPolicy < ApplicationPolicy
   def show? = own?
-  def create? = own_account?
+  def create? = own?
   def update? = own?
   def destroy? = own?
 
@@ -13,10 +13,6 @@ class TransactionPolicy < ApplicationPolicy
   private
 
   def own?
-    record.account.user_id == user.id
-  end
-
-  def own_account?
     record.account.user_id == user.id
   end
 end
