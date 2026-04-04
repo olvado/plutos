@@ -1,0 +1,31 @@
+mutation CreateAccount($input: CreateAccountInput!) {
+  createAccount(input: $input) {
+    account {
+      id
+      name
+      accountType
+      accountNumber
+      sortCode
+      dateOpened
+    }
+    errors
+  }
+}
+
+mutation UpdateAccount($input: UpdateAccountInput!) {
+  updateAccount(input: $input) {
+    account {
+      id
+      name
+      dateClosed
+    }
+    errors
+  }
+}
+
+mutation DeleteAccount($input: DeleteAccountInput!) {
+  deleteAccount(input: $input) {
+    success
+    errors
+  }
+}
