@@ -1,19 +1,20 @@
 import React from "react";
-import { ChakraProvider, Box, Heading, Text, VStack } from "@chakra-ui/react";
+import { ApolloProvider } from "@apollo/client";
+import { ChakraProvider } from "@chakra-ui/react";
 import { system } from "./theme";
+import client from "./graphql/client";
+import { AuthProvider } from "./contexts/AuthContext";
+import AppRoutes from "./routes";
 
 const App: React.FC = () => {
   return (
-    <ChakraProvider value={system}>
-      <Box as="main" minH="100vh" display="flex" alignItems="center" justifyContent="center">
-        <VStack gap={4}>
-          <Heading size="2xl">Plutos</Heading>
-          <Text fontSize="lg" color="fg.muted">
-            Wealth tracker and visualisation tool
-          </Text>
-        </VStack>
-      </Box>
-    </ChakraProvider>
+    <ApolloProvider client={client}>
+      <ChakraProvider value={system}>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </ChakraProvider>
+    </ApolloProvider>
   );
 };
 
