@@ -1,0 +1,63 @@
+{
+  "name": "plutos",
+  "packageManager": "yarn@1.22.22",
+  "private": true,
+  "version": "0.1.0",
+  "babel": {
+    "presets": [
+      "./node_modules/shakapacker/package/babel/preset.js",
+      ["@babel/preset-react", { "runtime": "automatic" }],
+      "@babel/preset-typescript"
+    ]
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "@apollo/client": "^4.1.6",
+    "@babel/core": "^7.29.0",
+    "@babel/plugin-transform-runtime": "^7.29.0",
+    "@babel/preset-env": "^7.29.2",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@babel/runtime": "^7.29.2",
+    "@chakra-ui/react": "^3.34.0",
+    "@emotion/react": "^11.14.0",
+    "@types/babel__core": "^7.20.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/webpack": "^5.28.5",
+    "babel-loader": "^10.1.1",
+    "compression-webpack-plugin": "^11.1.0",
+    "css-loader": "7.1.4",
+    "css-minimizer-webpack-plugin": "8.0.0",
+    "graphql": "^16.13.2",
+    "mini-css-extract-plugin": "2.10.2",
+    "prop-types": "15.8.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-on-rails": "16.5.1",
+    "react-router-dom": "^7.14.0",
+    "recharts": "^3.8.1",
+    "shakapacker": "8.4.0",
+    "style-loader": "4.0.0",
+    "terser-webpack-plugin": "^5.4.0",
+    "typescript": "^6.0.2",
+    "webpack": "^5.105.4",
+    "webpack-assets-manifest": "^6.5.1",
+    "webpack-cli": "^6.0.1",
+    "webpack-merge": "^6.0.1",
+    "webpack-subresource-integrity": "^5.1.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/typescript": "^5.0.9",
+    "@graphql-codegen/typescript-operations": "^5.0.9",
+    "@graphql-codegen/typescript-react-apollo": "^4.4.1",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
+    "@swc/core": "1.15.21",
+    "react-refresh": "0.18.0",
+    "swc-loader": "0.2.7",
+    "webpack-dev-server": "^5.2.3"
+  }
+}
