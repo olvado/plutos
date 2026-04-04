@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Plutos is a simple wealth trackerand visualisation tool for savings, Individual Savings Account (ISA)
+Plutos is a simple wealth tracker and visualisation tool for savings, Individual Savings Account (ISA)
 
 ## Reviewers
 
