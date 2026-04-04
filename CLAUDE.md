@@ -15,6 +15,9 @@ Plutos is a simple wealth tracker and visualisation tool for savings, Individual
 ## Implementation rules:
 
 - Each Phase of the plan should be implemented in a separate branch, with clear commit messages and pull requests for review and merging into the main branch. This allows for better organization and tracking of changes, as well as easier collaboration and code review.
+
+- Each step within a phase should be implemented in a single commit, with a clear and descriptive commit message that explains the changes made. This helps maintain a clean and understandable commit history, making it easier for reviewers to understand the context of each change and for future developers to trace back through the history of the project.
+
 - Before _every time_ you push code to the repository, you should run all tests and ci to ensure that your changes do not break existing functionality and that the codebase remains stable. This includes running unit tests, integration tests, and system tests as appropriate for the changes being made. This practice helps maintain code quality and prevents regressions in the application.
 
 - After a PR is raised you should review the code for quality, security, and user experience - as listed in the Reviewers section above - and provide feedback for improvements before merging. This ensures that the codebase maintains high standards and that any potential issues are addressed before they become part of the main branch. Make the required changes
