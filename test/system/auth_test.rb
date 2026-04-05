@@ -39,6 +39,17 @@ class AuthTest < ApplicationSystemTestCase
     assert_selector "h2", text: "Dashboard", wait: 10
   end
 
+  test "sign out" do
+    user = create(:user)
+    visit "/login"
+    fill_in "Email", with: user.email
+    fill_in "Password", with: "password123"
+    click_button "Sign in"
+    assert_current_path "/dashboard", wait: 10
+    click_button "Sign out"
+    assert_current_path "/login", wait: 10
+  end
+
   test "sign in with invalid credentials shows error" do
     visit "/login"
     fill_in "Email", with: "wrong@example.com"
