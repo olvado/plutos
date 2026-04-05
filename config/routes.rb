@@ -12,4 +12,8 @@ Rails.application.routes.draw do
     }
 
   root "pages#home"
+
+  # Catch-all: serve the SPA for any unmatched GET request so React Router
+  # can handle client-side navigation (must be last)
+  get "*path", to: "pages#home", constraints: ->(req) { !req.xhr? && req.format.html? }
 end

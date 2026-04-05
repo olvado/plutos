@@ -1,3 +1,5 @@
+# @format
+
 # Note: You must restart bin/shakapacker-dev-server for changes to take effect
 # This file contains the defaults used by shakapacker.
 
@@ -57,7 +59,7 @@ default: &default
   # Hook to run before webpack compilation (e.g., for generating dynamic entry points)
   # SECURITY: Only reference trusted scripts within your project. Ensure the hook path
   # points to a file within the project root that you control.
-  precompile_hook: 'bin/shakapacker-precompile-hook'
+  precompile_hook: "bin/shakapacker-precompile-hook"
 
   # Select whether the compiler will use SHA digest ('digest' option) or most recent modified timestamp ('mtime') to determine freshness
   compiler_strategy: digest
@@ -123,21 +125,21 @@ development:
     # Should we use gzip compression?
     compress: true
     # Note that apps that do not check the host are vulnerable to DNS rebinding attacks
-    allowed_hosts: 'auto'
+    allowed_hosts: "auto"
     # Shows progress and colorizes output of bin/shakapacker[-dev-server]
     pretty: true
     headers:
-      'Access-Control-Allow-Origin': '*'
+      "Access-Control-Allow-Origin": "*"
     static:
       watch:
-        ignored: '**/node_modules/**'
+        ignored: "**/node_modules/**"
 
 test:
   <<: *default
   # React on Rails defaults to build_test_command + TestHelper for test compilation.
   # If you prefer Shakapacker-only test compilation, set this to true and remove
   # build_test_command/TestHelper configuration.
-  compile: false
+  compile: true
 
   # Default (recommended): compile test packs to a separate directory from development output.
   # This avoids test/dev manifest collisions and mixing HMR artifacts into tests.
