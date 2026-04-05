@@ -14,6 +14,21 @@ query GetAccounts {
       totalInterest
       balance
     }
+    monthlySummaries {
+      month
+      netChange
+    }
+  }
+}
+
+query GetRecentTransactions($limit: Int) {
+  recentTransactions(limit: $limit) {
+    id
+    type
+    description
+    amount
+    date
+    accountId
   }
 }
 
