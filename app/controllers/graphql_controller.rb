@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 class GraphqlController < ApplicationController
-  before_action :authenticate_user!
+  before_action :require_authenticated_user!
+
+  private
+
+  def require_authenticated_user!
+    render json: { error: "Unauthorized" }, status: :unauthorized unless current_user
+  end
+
+  public
 
   def execute
     variables = prepare_variables(params[:variables])

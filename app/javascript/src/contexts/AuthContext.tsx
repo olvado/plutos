@@ -66,6 +66,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const data = await res.json();
       throw new Error(data.error ?? "Invalid email or password");
     }
+    const newToken = res.headers.get("X-CSRF-Token");
+    if (newToken) {
+      document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.setAttribute("content", newToken);
+    }
     await client.resetStore();
     await fetchCurrentUser();
   };

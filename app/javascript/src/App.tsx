@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { system } from "./theme";
 import client from "./graphql/client";

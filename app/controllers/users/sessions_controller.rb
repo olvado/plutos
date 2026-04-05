@@ -1,10 +1,12 @@
 module Users
   class SessionsController < Devise::SessionsController
+    skip_before_action :verify_authenticity_token, only: [ :create, :destroy ]
     respond_to :json
 
     def create
       super do |resource|
         if resource.persisted?
+          response.set_header("X-CSRF-Token", form_authenticity_token)
           render json: { user: user_json(resource) }, status: :ok and return
         end
       end

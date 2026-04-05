@@ -9,8 +9,15 @@ const csrfLink = setContext((_, { headers }) => {
   return { headers: { ...headers, "X-CSRF-Token": token } };
 });
 
+const PUBLIC_PATHS = ["/login", "/signup", "/forgot-password"];
+
 const errorLink = onError(({ networkError }) => {
-  if (networkError && "statusCode" in networkError && networkError.statusCode === 401) {
+  if (
+    networkError &&
+    "statusCode" in networkError &&
+    networkError.statusCode === 401 &&
+    !PUBLIC_PATHS.some(p => window.location.pathname.startsWith(p))
+  ) {
     window.location.href = "/login";
   }
 });
