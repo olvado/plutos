@@ -40,4 +40,5 @@ yarn-debug.log*
 ssr-generated
 .env
 
+.claude
 plutos.md
