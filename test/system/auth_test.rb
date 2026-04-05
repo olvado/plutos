@@ -50,6 +50,15 @@ class AuthTest < ApplicationSystemTestCase
     assert_current_path "/login", wait: 10
   end
 
+  test "forgot password sends reset instructions" do
+    user = create(:user)
+    visit "/forgot-password"
+    sleep(5) # Wait for React to mount
+    fill_in "Email", with: user.email
+    click_button "Send reset link"
+    assert_selector "h2", text: "Check your email", wait: 10
+  end
+
   test "sign in with invalid credentials shows error" do
     visit "/login"
     fill_in "Email", with: "wrong@example.com"
