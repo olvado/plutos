@@ -16,20 +16,21 @@ import {
   useGetAccountsQuery,
   useGetRecentTransactionsQuery,
   GetAccountsQuery,
+  AccountTypeEnum,
 } from "../../graphql/generated";
 
-const ACCOUNT_TYPE_LABELS: Record<string, string> = {
-  SAVINGS: "Savings",
-  CASH_ISA: "Cash ISA",
-  INVESTMENT_ISA: "Investment ISA",
-  LIFETIME_ISA: "Lifetime ISA",
+const ACCOUNT_TYPE_LABELS: Record<AccountTypeEnum, string> = {
+  [AccountTypeEnum.Savings]: "Savings",
+  [AccountTypeEnum.CashIsa]: "Cash ISA",
+  [AccountTypeEnum.InvestmentIsa]: "Investment ISA",
+  [AccountTypeEnum.LifetimeIsa]: "Lifetime ISA",
 };
 
-const ACCOUNT_TYPE_COLORS: Record<string, string> = {
-  SAVINGS: "blue",
-  CASH_ISA: "green",
-  INVESTMENT_ISA: "purple",
-  LIFETIME_ISA: "orange",
+const ACCOUNT_TYPE_COLORS: Record<AccountTypeEnum, string> = {
+  [AccountTypeEnum.Savings]: "blue",
+  [AccountTypeEnum.CashIsa]: "green",
+  [AccountTypeEnum.InvestmentIsa]: "purple",
+  [AccountTypeEnum.LifetimeIsa]: "orange",
 };
 
 const TRANSACTION_TYPE_LABELS: Record<string, string> = {

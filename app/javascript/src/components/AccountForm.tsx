@@ -4,6 +4,7 @@ import {
   useCreateAccountMutation,
   useUpdateAccountMutation,
   GetAccountQuery,
+  AccountTypeEnum,
 } from "../../graphql/generated";
 import ErrorAlert from "./ErrorAlert";
 
@@ -16,11 +17,11 @@ interface AccountFormProps {
   onSaved: () => void;
 }
 
-const ACCOUNT_TYPES = [
-  { value: "SAVINGS", label: "Savings" },
-  { value: "CASH_ISA", label: "Cash ISA" },
-  { value: "INVESTMENT_ISA", label: "Investment ISA" },
-  { value: "LIFETIME_ISA", label: "Lifetime ISA" },
+const ACCOUNT_TYPES: { value: AccountTypeEnum; label: string }[] = [
+  { value: AccountTypeEnum.Savings, label: "Savings" },
+  { value: AccountTypeEnum.CashIsa, label: "Cash ISA" },
+  { value: AccountTypeEnum.InvestmentIsa, label: "Investment ISA" },
+  { value: AccountTypeEnum.LifetimeIsa, label: "Lifetime ISA" },
 ];
 
 function toDateInputValue(iso: string | null | undefined): string {
@@ -41,7 +42,9 @@ function AccountFormInner({
   const isEdit = !!account;
 
   const [name, setName] = useState(account?.name ?? "");
-  const [accountType, setAccountType] = useState(account?.accountType ?? "SAVINGS");
+  const [accountType, setAccountType] = useState<AccountTypeEnum>(
+    account?.accountType ?? AccountTypeEnum.Savings
+  );
   const [accountNumber, setAccountNumber] = useState(account?.accountNumber ?? "");
   const [sortCode, setSortCode] = useState(account?.sortCode ?? "");
   const [dateOpened, setDateOpened] = useState(toDateInputValue(account?.dateOpened));
@@ -76,9 +79,7 @@ function AccountFormInner({
           variables: {
             input: {
               name,
-              accountType: accountType as Parameters<
-                typeof createAccount
-              >[0]["variables"]["input"]["accountType"],
+              accountType,
               accountNumber,
               sortCode,
               dateOpened: new Date(dateOpened).toISOString(),

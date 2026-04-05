@@ -5,6 +5,7 @@ import {
   useUpdateTransactionMutation,
   GetAccountQuery,
   TransactionTypeEnum,
+  AccountTypeEnum,
 } from "../../graphql/generated";
 import ErrorAlert from "./ErrorAlert";
 
@@ -24,7 +25,7 @@ function availableTypes(accountType: string): { value: string; label: string }[]
     { value: "DEPOSIT", label: "Deposit" },
     { value: "WITHDRAWAL", label: "Withdrawal" },
   ];
-  if (accountType === "INVESTMENT_ISA") {
+  if (accountType === AccountTypeEnum.InvestmentIsa) {
     base.push({ value: "VARIANCE", label: "Variance" });
   } else {
     base.push({ value: "INTEREST", label: "Interest" });

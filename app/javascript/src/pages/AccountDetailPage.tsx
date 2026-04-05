@@ -18,16 +18,17 @@ import {
   useDeleteAccountMutation,
   useDeleteTransactionMutation,
   GetAccountQuery,
+  AccountTypeEnum,
 } from "../../graphql/generated";
 import AccountForm from "../components/AccountForm";
 import TransactionForm from "../components/TransactionForm";
 import DeleteConfirmation from "../components/DeleteConfirmation";
 
-const ACCOUNT_TYPE_LABELS: Record<string, string> = {
-  SAVINGS: "Savings",
-  CASH_ISA: "Cash ISA",
-  INVESTMENT_ISA: "Investment ISA",
-  LIFETIME_ISA: "Lifetime ISA",
+const ACCOUNT_TYPE_LABELS: Record<AccountTypeEnum, string> = {
+  [AccountTypeEnum.Savings]: "Savings",
+  [AccountTypeEnum.CashIsa]: "Cash ISA",
+  [AccountTypeEnum.InvestmentIsa]: "Investment ISA",
+  [AccountTypeEnum.LifetimeIsa]: "Lifetime ISA",
 };
 
 const TRANSACTION_TYPE_LABELS: Record<string, string> = {
@@ -165,7 +166,7 @@ export default function AccountDetailPage() {
           { label: "Balance", value: balance },
           { label: "Deposits", value: account.balance?.totalDeposits ?? 0 },
           { label: "Withdrawals", value: account.balance?.totalWithdrawals ?? 0 },
-          ...(account.accountType === "INVESTMENT_ISA"
+          ...(account.accountType === AccountTypeEnum.InvestmentIsa
             ? [{ label: "Variance", value: account.balance?.totalVariance ?? 0 }]
             : [{ label: "Interest", value: account.balance?.totalInterest ?? 0 }]),
         ].map(({ label, value }) => (
@@ -188,10 +189,10 @@ export default function AccountDetailPage() {
               <option value="">All types</option>
               <option value="DEPOSIT">Deposit</option>
               <option value="WITHDRAWAL">Withdrawal</option>
-              {account.accountType === "INVESTMENT_ISA" && (
+              {account.accountType === AccountTypeEnum.InvestmentIsa && (
                 <option value="VARIANCE">Variance</option>
               )}
-              {account.accountType !== "INVESTMENT_ISA" && (
+              {account.accountType !== AccountTypeEnum.InvestmentIsa && (
                 <option value="INTEREST">Interest</option>
               )}
             </NativeSelect.Field>
