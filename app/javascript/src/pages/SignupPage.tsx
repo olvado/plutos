@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Button, Field, Heading, Input, Link, Stack, Text } from "@chakra-ui/react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function SignupPage() {
   const { signup } = useAuth();
-  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,11 +31,16 @@ export default function SignupPage() {
     return (
       <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4}>
         <Box w="full" maxW="md" textAlign="center">
-          <Heading size="xl" mb={4}>Check your email</Heading>
+          <Heading size="xl" mb={4}>
+            Check your email
+          </Heading>
           <Text color="fg.muted" mb={6}>
-            We've sent a confirmation link to <strong>{email}</strong>. Please confirm your email address before signing in.
+            We've sent a confirmation link to <strong>{email}</strong>. Please confirm your email
+            address before signing in.
           </Text>
-          <Link as={RouterLink} to="/login">Back to sign in</Link>
+          <Link as={RouterLink} to="/login">
+            Back to sign in
+          </Link>
         </Box>
       </Box>
     );
@@ -45,14 +49,27 @@ export default function SignupPage() {
   return (
     <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4}>
       <Box w="full" maxW="md">
-        <Heading size="xl" mb={2} textAlign="center">Create your account</Heading>
-        <Text color="fg.muted" textAlign="center" mb={8}>Start tracking your wealth today</Text>
+        <Heading size="xl" mb={2} textAlign="center">
+          Create your account
+        </Heading>
+        <Text color="fg.muted" textAlign="center" mb={8}>
+          Start tracking your wealth today
+        </Text>
 
         <Box as="form" onSubmit={handleSubmit}>
           <Stack gap={5}>
             {error && (
-              <Box bg="red.subtle" borderWidth="1px" borderColor="red.emphasized" rounded="md" px={4} py={3}>
-                <Text color="red.fg" fontSize="sm">{error}</Text>
+              <Box
+                bg="red.subtle"
+                borderWidth="1px"
+                borderColor="red.emphasized"
+                rounded="md"
+                px={4}
+                py={3}
+              >
+                <Text color="red.fg" fontSize="sm">
+                  {error}
+                </Text>
               </Box>
             )}
 
@@ -104,7 +121,9 @@ export default function SignupPage() {
 
             <Text textAlign="center" fontSize="sm" color="fg.muted">
               Already have an account?{" "}
-              <Link as={RouterLink} to="/login">Sign in</Link>
+              <Link as={RouterLink} to="/login">
+                Sign in
+              </Link>
             </Text>
           </Stack>
         </Box>

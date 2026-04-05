@@ -16,7 +16,10 @@
     ]
   },
   "scripts": {
-    "codegen": "graphql-codegen --config codegen.yml"
+    "codegen": "graphql-codegen --config codegen.yml",
+    "lint": "eslint app/javascript/src app/javascript/packs",
+    "format:check": "prettier --check \"app/javascript/**/*.{ts,tsx,js}\"",
+    "format": "prettier --write \"app/javascript/**/*.{ts,tsx,js}\""
   },
   "browserslist": [
     "defaults"
@@ -68,8 +71,14 @@
     "@graphql-codegen/typescript-react-apollo": "^4.4.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
     "@swc/core": "1.15.21",
+    "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "prettier": "^3.8.1",
     "react-refresh": "0.18.0",
     "swc-loader": "0.2.7",
+    "typescript-eslint": "^8.58.0",
     "webpack-dev-server": "^5.2.3"
   }
 }

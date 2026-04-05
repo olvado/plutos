@@ -21,8 +21,12 @@ export default function Navbar() {
             Plutos
           </Heading>
           <HStack gap={4} display={{ base: "none", md: "flex" }}>
-            <Link as={RouterLink} to="/dashboard">Dashboard</Link>
-            <Link as={RouterLink} to="/visualizations">Visualizations</Link>
+            <Link as={RouterLink} to="/dashboard">
+              Dashboard
+            </Link>
+            <Link as={RouterLink} to="/visualizations">
+              Visualizations
+            </Link>
           </HStack>
         </HStack>
 
@@ -30,9 +34,15 @@ export default function Navbar() {
           <DarkModeToggle />
           {currentUser && (
             <>
-              <Text fontSize="sm" color="fg.muted">{currentUser.name}</Text>
-              <Link as={RouterLink} to="/profile" fontSize="sm">Profile</Link>
-              <Button size="sm" variant="outline" onClick={handleLogout}>Sign out</Button>
+              <Text fontSize="sm" color="fg.muted">
+                {currentUser.name}
+              </Text>
+              <Link as={RouterLink} to="/profile" fontSize="sm">
+                Profile
+              </Link>
+              <Button size="sm" variant="outline" onClick={handleLogout}>
+                Sign out
+              </Button>
             </>
           )}
         </HStack>

@@ -28,14 +28,27 @@ export default function LoginPage() {
   return (
     <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" px={4}>
       <Box w="full" maxW="md">
-        <Heading size="xl" mb={2} textAlign="center">Sign in to Plutos</Heading>
-        <Text color="fg.muted" textAlign="center" mb={8}>Track your savings and ISA performance</Text>
+        <Heading size="xl" mb={2} textAlign="center">
+          Sign in to Plutos
+        </Heading>
+        <Text color="fg.muted" textAlign="center" mb={8}>
+          Track your savings and ISA performance
+        </Text>
 
         <Box as="form" onSubmit={handleSubmit}>
           <Stack gap={5}>
             {error && (
-              <Box bg="red.subtle" borderWidth="1px" borderColor="red.emphasized" rounded="md" px={4} py={3}>
-                <Text color="red.fg" fontSize="sm">{error}</Text>
+              <Box
+                bg="red.subtle"
+                borderWidth="1px"
+                borderColor="red.emphasized"
+                rounded="md"
+                px={4}
+                py={3}
+              >
+                <Text color="red.fg" fontSize="sm">
+                  {error}
+                </Text>
               </Box>
             )}
 
@@ -59,7 +72,9 @@ export default function LoginPage() {
                 autoComplete="current-password"
               />
               <Field.HelperText>
-                <Link as={RouterLink} to="/forgot-password" fontSize="sm">Forgot password?</Link>
+                <Link as={RouterLink} to="/forgot-password" fontSize="sm">
+                  Forgot password?
+                </Link>
               </Field.HelperText>
             </Field.Root>
 
@@ -69,7 +84,9 @@ export default function LoginPage() {
 
             <Text textAlign="center" fontSize="sm" color="fg.muted">
               Don't have an account?{" "}
-              <Link as={RouterLink} to="/signup">Create one</Link>
+              <Link as={RouterLink} to="/signup">
+                Create one
+              </Link>
             </Text>
           </Stack>
         </Box>
