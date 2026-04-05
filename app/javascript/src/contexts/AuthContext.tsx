@@ -19,6 +19,7 @@ interface AuthContextValue {
     passwordConfirmation: string
   ) => Promise<void>;
   logout: () => Promise<void>;
+  forgotPassword: (email: string) => Promise<void>;
 }
 
 const ME_QUERY = gql`
@@ -106,8 +107,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await client.clearStore();
   };
 
+  const forgotPassword = async (email: string) => {
+    const res = await deviseRequest("/users/password", "POST", { user: { email } });
+    // 422 is expected when the email isn't found — we still show success to avoid user enumeration.
+    if (!res.ok && res.status !== 422) {
+      throw new Error("Something went wrong. Please try again.");
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ currentUser, loading, login, signup, logout }}>
+    <AuthContext.Provider value={{ currentUser, loading, login, signup, logout, forgotPassword }}>
       {children}
     </AuthContext.Provider>
   );
