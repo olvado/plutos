@@ -1,4 +1,4 @@
-schema: http://localhost:3000/graphql
+schema: schema.graphql
 documents:
   - app/javascript/graphql/queries/**/*.graphql
   - app/javascript/graphql/mutations/**/*.graphql
@@ -12,3 +12,5 @@ generates:
       withHooks: true
       withComponent: false
       withHOC: false
+      # Apollo Client v4 moved hooks to @apollo/client/react
+      apolloReactHooksImportFrom: "@apollo/client/react"

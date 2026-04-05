@@ -12,5 +12,13 @@ module Types
     field :transactions, [ Types::TransactionType ], null: false
     field :balance, Types::AccountBalanceType, null: true
     field :monthly_summaries, [ Types::AccountMonthlySummaryType ], null: false
+
+    def balance
+      dataloader.with(Sources::AccountBalanceSource).load(object.id)
+    end
+
+    def monthly_summaries
+      dataloader.with(Sources::AccountMonthlySummarySource).load(object.id)
+    end
   end
 end

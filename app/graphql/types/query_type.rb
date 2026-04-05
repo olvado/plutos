@@ -21,6 +21,11 @@ module Types
       argument :to, GraphQL::Types::ISO8601DateTime, required: false
     end
 
+    field :recent_transactions, [ Types::TransactionType ], null: false,
+      description: "Returns the most recent transactions across all of the user's accounts" do
+      argument :limit, Integer, required: false, default_value: 10
+    end
+
     def me
       context[:current_user]
     end
@@ -33,6 +38,10 @@ module Types
       record = Account.find(id)
       authorize_with_pundit!(record, :show?)
       record
+    end
+
+    def recent_transactions(limit:)
+      Transaction.joins(:account).where(accounts: { user_id: context[:current_user].id }).order(date: :desc).limit(limit)
     end
 
     def transactions(account_id:, type: nil, from: nil, to: nil)

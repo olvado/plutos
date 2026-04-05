@@ -6,6 +6,8 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import DashboardPage from "./pages/DashboardPage";
+import AccountDetailPage from "./pages/AccountDetailPage";
+import ProfilePage from "./pages/ProfilePage";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { currentUser, loading } = useAuth();
@@ -57,9 +59,9 @@ export default function AppRoutes() {
         >
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/accounts/:id" element={<DashboardPage />} />
+          <Route path="/accounts/:id" element={<AccountDetailPage />} />
           <Route path="/visualizations" element={<DashboardPage />} />
-          <Route path="/profile" element={<DashboardPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
