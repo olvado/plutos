@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Box, Button, Field, Heading, Input, Link, Stack, Text } from "@chakra-ui/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import ErrorAlert from "../components/ErrorAlert";
 
 export default function LoginPage() {
   const { login } = useAuth();
@@ -37,20 +38,7 @@ export default function LoginPage() {
 
         <Box as="form" onSubmit={handleSubmit}>
           <Stack gap={5}>
-            {error && (
-              <Box
-                bg="red.subtle"
-                borderWidth="1px"
-                borderColor="red.emphasized"
-                rounded="md"
-                px={4}
-                py={3}
-              >
-                <Text color="red.fg" fontSize="sm">
-                  {error}
-                </Text>
-              </Box>
-            )}
+            <ErrorAlert error={error} />
 
             <Field.Root required>
               <Field.Label>Email</Field.Label>

@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Box, Button, Field, Heading, Input, Link, Stack, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import ErrorAlert from "../components/ErrorAlert";
 
 export default function ForgotPasswordPage() {
+  const { forgotPassword } = useAuth();
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -13,21 +16,7 @@ export default function ForgotPasswordPage() {
     setError("");
     setLoading(true);
     try {
-      const token =
-        document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.content ?? "";
-      const res = await fetch("/users/password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          "X-CSRF-Token": token,
-        },
-        credentials: "same-origin",
-        body: JSON.stringify({ user: { email } }),
-      });
-      if (!res.ok && res.status !== 422) {
-        throw new Error("Something went wrong. Please try again.");
-      }
+      await forgotPassword(email);
       setSubmitted(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -67,20 +56,7 @@ export default function ForgotPasswordPage() {
 
         <Box as="form" onSubmit={handleSubmit}>
           <Stack gap={5}>
-            {error && (
-              <Box
-                bg="red.subtle"
-                borderWidth="1px"
-                borderColor="red.emphasized"
-                rounded="md"
-                px={4}
-                py={3}
-              >
-                <Text color="red.fg" fontSize="sm">
-                  {error}
-                </Text>
-              </Box>
-            )}
+            <ErrorAlert error={error} />
 
             <Field.Root required>
               <Field.Label>Email</Field.Label>
