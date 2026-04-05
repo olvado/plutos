@@ -15,8 +15,7 @@ export default function DarkModeToggle() {
     localStorage.setItem(STORAGE_KEY, colorMode);
   }, [colorMode]);
 
-  const toggleColorMode = () =>
-    setColorMode(prev => (prev === "light" ? "dark" : "light"));
+  const toggleColorMode = () => setColorMode(prev => (prev === "light" ? "dark" : "light"));
 
   return (
     <IconButton

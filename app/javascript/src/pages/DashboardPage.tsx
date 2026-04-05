@@ -7,7 +7,9 @@ export default function DashboardPage() {
   return (
     <VStack align="start" gap={2}>
       <Heading size="lg">Dashboard</Heading>
-      <Text color="fg.muted">Welcome back, {currentUser?.name}. Your accounts will appear here.</Text>
+      <Text color="fg.muted">
+        Welcome back, {currentUser?.name}. Your accounts will appear here.
+      </Text>
     </VStack>
   );
 }

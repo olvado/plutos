@@ -12,13 +12,22 @@ interface AuthContextValue {
   currentUser: CurrentUser | null;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  signup: (name: string, email: string, password: string, passwordConfirmation: string) => Promise<void>;
+  signup: (
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ) => Promise<void>;
   logout: () => Promise<void>;
 }
 
 const ME_QUERY = gql`
   query Me {
-    me { id name email }
+    me {
+      id
+      name
+      email
+    }
   }
 `;
 
@@ -31,7 +40,7 @@ async function deviseRequest(path: string, method: string, body?: object): Promi
     method,
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json",
+      Accept: "application/json",
       "X-CSRF-Token": csrfToken(),
     },
     credentials: "same-origin",
@@ -68,13 +77,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
     const newToken = res.headers.get("X-CSRF-Token");
     if (newToken) {
-      document.querySelector<HTMLMetaElement>('meta[name="csrf-token"]')?.setAttribute("content", newToken);
+      document
+        .querySelector<HTMLMetaElement>('meta[name="csrf-token"]')
+        ?.setAttribute("content", newToken);
     }
     await client.resetStore();
     await fetchCurrentUser();
   };
 
-  const signup = async (name: string, email: string, password: string, passwordConfirmation: string) => {
+  const signup = async (
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ) => {
     const res = await deviseRequest("/users", "POST", {
       user: { name, email, password, password_confirmation: passwordConfirmation },
     });
