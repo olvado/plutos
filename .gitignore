@@ -38,6 +38,8 @@ yarn-debug.log*
 # React on Rails (generated and local files)
 **/generated/**
 ssr-generated
+# GraphQL codegen output is committed so CI can use it without a running server
+!app/javascript/graphql/generated/**
 .env
 
 .claude
