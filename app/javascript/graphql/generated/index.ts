@@ -1,5 +1,6 @@
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
+import * as ApolloReactHooks from "@apollo/client/react";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -562,10 +563,13 @@ export type CreateAccountMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateAccountMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateAccountMutation, CreateAccountMutationVariables>
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    CreateAccountMutation,
+    CreateAccountMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateAccountMutation, CreateAccountMutationVariables>(
+  return ApolloReactHooks.useMutation<CreateAccountMutation, CreateAccountMutationVariables>(
     CreateAccountDocument,
     options
   );
@@ -611,10 +615,13 @@ export type UpdateAccountMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateAccountMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateAccountMutation, UpdateAccountMutationVariables>
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    UpdateAccountMutation,
+    UpdateAccountMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateAccountMutation, UpdateAccountMutationVariables>(
+  return ApolloReactHooks.useMutation<UpdateAccountMutation, UpdateAccountMutationVariables>(
     UpdateAccountDocument,
     options
   );
@@ -656,10 +663,13 @@ export type DeleteAccountMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteAccountMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeleteAccountMutation, DeleteAccountMutationVariables>
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    DeleteAccountMutation,
+    DeleteAccountMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteAccountMutation, DeleteAccountMutationVariables>(
+  return ApolloReactHooks.useMutation<DeleteAccountMutation, DeleteAccountMutationVariables>(
     DeleteAccountDocument,
     options
   );
@@ -707,16 +717,16 @@ export type CreateTransactionMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateTransactionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
     CreateTransactionMutation,
     CreateTransactionMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateTransactionMutation, CreateTransactionMutationVariables>(
-    CreateTransactionDocument,
-    options
-  );
+  return ApolloReactHooks.useMutation<
+    CreateTransactionMutation,
+    CreateTransactionMutationVariables
+  >(CreateTransactionDocument, options);
 }
 export type CreateTransactionMutationHookResult = ReturnType<typeof useCreateTransactionMutation>;
 export type CreateTransactionMutationResult = Apollo.MutationResult<CreateTransactionMutation>;
@@ -761,16 +771,16 @@ export type UpdateTransactionMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateTransactionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
     UpdateTransactionMutation,
     UpdateTransactionMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateTransactionMutation, UpdateTransactionMutationVariables>(
-    UpdateTransactionDocument,
-    options
-  );
+  return ApolloReactHooks.useMutation<
+    UpdateTransactionMutation,
+    UpdateTransactionMutationVariables
+  >(UpdateTransactionDocument, options);
 }
 export type UpdateTransactionMutationHookResult = ReturnType<typeof useUpdateTransactionMutation>;
 export type UpdateTransactionMutationResult = Apollo.MutationResult<UpdateTransactionMutation>;
@@ -809,16 +819,16 @@ export type DeleteTransactionMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteTransactionMutation(
-  baseOptions?: Apollo.MutationHookOptions<
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
     DeleteTransactionMutation,
     DeleteTransactionMutationVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteTransactionMutation, DeleteTransactionMutationVariables>(
-    DeleteTransactionDocument,
-    options
-  );
+  return ApolloReactHooks.useMutation<
+    DeleteTransactionMutation,
+    DeleteTransactionMutationVariables
+  >(DeleteTransactionDocument, options);
 }
 export type DeleteTransactionMutationHookResult = ReturnType<typeof useDeleteTransactionMutation>;
 export type DeleteTransactionMutationResult = Apollo.MutationResult<DeleteTransactionMutation>;
@@ -861,10 +871,13 @@ export type UpdateProfileMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateProfileMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateProfileMutation, UpdateProfileMutationVariables>
+  baseOptions?: ApolloReactHooks.MutationHookOptions<
+    UpdateProfileMutation,
+    UpdateProfileMutationVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateProfileMutation, UpdateProfileMutationVariables>(
+  return ApolloReactHooks.useMutation<UpdateProfileMutation, UpdateProfileMutationVariables>(
     UpdateProfileDocument,
     options
   );
@@ -916,37 +929,45 @@ export const GetAccountsDocument = gql`
  * });
  */
 export function useGetAccountsQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
+  baseOptions?: ApolloReactHooks.QueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetAccountsQuery, GetAccountsQueryVariables>(GetAccountsDocument, options);
+  return ApolloReactHooks.useQuery<GetAccountsQuery, GetAccountsQueryVariables>(
+    GetAccountsDocument,
+    options
+  );
 }
 export function useGetAccountsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetAccountsQuery, GetAccountsQueryVariables>(
+  return ApolloReactHooks.useLazyQuery<GetAccountsQuery, GetAccountsQueryVariables>(
     GetAccountsDocument,
     options
   );
 }
 // @ts-ignore
 export function useGetAccountsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetAccountsQuery, GetAccountsQueryVariables>;
+  baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<
+    GetAccountsQuery,
+    GetAccountsQueryVariables
+  >
+): ApolloReactHooks.UseSuspenseQueryResult<GetAccountsQuery, GetAccountsQueryVariables>;
 export function useGetAccountsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetAccountsQuery | undefined, GetAccountsQueryVariables>;
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<GetAccountsQuery | undefined, GetAccountsQueryVariables>;
 export function useGetAccountsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetAccountsQuery, GetAccountsQueryVariables>
 ) {
   const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetAccountsQuery, GetAccountsQueryVariables>(
+    baseOptions === ApolloReactHooks.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useSuspenseQuery<GetAccountsQuery, GetAccountsQueryVariables>(
     GetAccountsDocument,
     options
   );
@@ -988,61 +1009,66 @@ export const GetRecentTransactionsDocument = gql`
  * });
  */
 export function useGetRecentTransactionsQuery(
-  baseOptions?: Apollo.QueryHookOptions<
+  baseOptions?: ApolloReactHooks.QueryHookOptions<
     GetRecentTransactionsQuery,
     GetRecentTransactionsQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetRecentTransactionsQuery, GetRecentTransactionsQueryVariables>(
+  return ApolloReactHooks.useQuery<GetRecentTransactionsQuery, GetRecentTransactionsQueryVariables>(
     GetRecentTransactionsDocument,
     options
   );
 }
 export function useGetRecentTransactionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
     GetRecentTransactionsQuery,
     GetRecentTransactionsQueryVariables
   >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetRecentTransactionsQuery, GetRecentTransactionsQueryVariables>(
-    GetRecentTransactionsDocument,
-    options
-  );
+  return ApolloReactHooks.useLazyQuery<
+    GetRecentTransactionsQuery,
+    GetRecentTransactionsQueryVariables
+  >(GetRecentTransactionsDocument, options);
 }
 // @ts-ignore
 export function useGetRecentTransactionsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<
+  baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<
     GetRecentTransactionsQuery,
     GetRecentTransactionsQueryVariables
   >
-): Apollo.UseSuspenseQueryResult<GetRecentTransactionsQuery, GetRecentTransactionsQueryVariables>;
+): ApolloReactHooks.UseSuspenseQueryResult<
+  GetRecentTransactionsQuery,
+  GetRecentTransactionsQueryVariables
+>;
 export function useGetRecentTransactionsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<
         GetRecentTransactionsQuery,
         GetRecentTransactionsQueryVariables
       >
-): Apollo.UseSuspenseQueryResult<
+): ApolloReactHooks.UseSuspenseQueryResult<
   GetRecentTransactionsQuery | undefined,
   GetRecentTransactionsQueryVariables
 >;
 export function useGetRecentTransactionsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<
         GetRecentTransactionsQuery,
         GetRecentTransactionsQueryVariables
       >
 ) {
   const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetRecentTransactionsQuery, GetRecentTransactionsQueryVariables>(
-    GetRecentTransactionsDocument,
-    options
-  );
+    baseOptions === ApolloReactHooks.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useSuspenseQuery<
+    GetRecentTransactionsQuery,
+    GetRecentTransactionsQueryVariables
+  >(GetRecentTransactionsDocument, options);
 }
 export type GetRecentTransactionsQueryHookResult = ReturnType<typeof useGetRecentTransactionsQuery>;
 export type GetRecentTransactionsLazyQueryHookResult = ReturnType<
@@ -1108,38 +1134,43 @@ export const GetAccountDocument = gql`
  * });
  */
 export function useGetAccountQuery(
-  baseOptions: Apollo.QueryHookOptions<GetAccountQuery, GetAccountQueryVariables> &
+  baseOptions: ApolloReactHooks.QueryHookOptions<GetAccountQuery, GetAccountQueryVariables> &
     ({ variables: GetAccountQueryVariables; skip?: boolean } | { skip: boolean })
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetAccountQuery, GetAccountQueryVariables>(GetAccountDocument, options);
+  return ApolloReactHooks.useQuery<GetAccountQuery, GetAccountQueryVariables>(
+    GetAccountDocument,
+    options
+  );
 }
 export function useGetAccountLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetAccountQuery, GetAccountQueryVariables>(
+  return ApolloReactHooks.useLazyQuery<GetAccountQuery, GetAccountQueryVariables>(
     GetAccountDocument,
     options
   );
 }
 // @ts-ignore
 export function useGetAccountSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetAccountQuery, GetAccountQueryVariables>;
+  baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<GetAccountQuery, GetAccountQueryVariables>;
 export function useGetAccountSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetAccountQuery | undefined, GetAccountQueryVariables>;
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<GetAccountQuery | undefined, GetAccountQueryVariables>;
 export function useGetAccountSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetAccountQuery, GetAccountQueryVariables>
 ) {
   const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetAccountQuery, GetAccountQueryVariables>(
+    baseOptions === ApolloReactHooks.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useSuspenseQuery<GetAccountQuery, GetAccountQueryVariables>(
     GetAccountDocument,
     options
   );
@@ -1174,30 +1205,36 @@ export const GetMeDocument = gql`
  * });
  */
 export function useGetMeQuery(
-  baseOptions?: Apollo.QueryHookOptions<GetMeQuery, GetMeQueryVariables>
+  baseOptions?: ApolloReactHooks.QueryHookOptions<GetMeQuery, GetMeQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+  return ApolloReactHooks.useQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
 }
 export function useGetMeLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetMeQuery, GetMeQueryVariables>
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+  return ApolloReactHooks.useLazyQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
 }
 // @ts-ignore
 export function useGetMeSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetMeQuery, GetMeQueryVariables>;
+  baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<GetMeQuery, GetMeQueryVariables>;
 export function useGetMeSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetMeQuery | undefined, GetMeQueryVariables>;
+  baseOptions?:
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<GetMeQuery | undefined, GetMeQueryVariables>;
 export function useGetMeSuspenseQuery(
-  baseOptions?: Apollo.SkipToken | Apollo.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
+  baseOptions?:
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetMeQuery, GetMeQueryVariables>
 ) {
   const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
+    baseOptions === ApolloReactHooks.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useSuspenseQuery<GetMeQuery, GetMeQueryVariables>(GetMeDocument, options);
 }
 export type GetMeQueryHookResult = ReturnType<typeof useGetMeQuery>;
 export type GetMeLazyQueryHookResult = ReturnType<typeof useGetMeLazyQuery>;
@@ -1240,41 +1277,55 @@ export const GetTransactionsDocument = gql`
  * });
  */
 export function useGetTransactionsQuery(
-  baseOptions: Apollo.QueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables> &
+  baseOptions: ApolloReactHooks.QueryHookOptions<
+    GetTransactionsQuery,
+    GetTransactionsQueryVariables
+  > &
     ({ variables: GetTransactionsQueryVariables; skip?: boolean } | { skip: boolean })
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
+  return ApolloReactHooks.useQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
     GetTransactionsDocument,
     options
   );
 }
 export function useGetTransactionsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
+  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+    GetTransactionsQuery,
+    GetTransactionsQueryVariables
+  >
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
+  return ApolloReactHooks.useLazyQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
     GetTransactionsDocument,
     options
   );
 }
 // @ts-ignore
 export function useGetTransactionsSuspenseQuery(
-  baseOptions?: Apollo.SuspenseQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetTransactionsQuery, GetTransactionsQueryVariables>;
+  baseOptions?: ApolloReactHooks.SuspenseQueryHookOptions<
+    GetTransactionsQuery,
+    GetTransactionsQueryVariables
+  >
+): ApolloReactHooks.UseSuspenseQueryResult<GetTransactionsQuery, GetTransactionsQueryVariables>;
 export function useGetTransactionsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
-): Apollo.UseSuspenseQueryResult<GetTransactionsQuery | undefined, GetTransactionsQueryVariables>;
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
+): ApolloReactHooks.UseSuspenseQueryResult<
+  GetTransactionsQuery | undefined,
+  GetTransactionsQueryVariables
+>;
 export function useGetTransactionsSuspenseQuery(
   baseOptions?:
-    | Apollo.SkipToken
-    | Apollo.SuspenseQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
+    | ApolloReactHooks.SkipToken
+    | ApolloReactHooks.SuspenseQueryHookOptions<GetTransactionsQuery, GetTransactionsQueryVariables>
 ) {
   const options =
-    baseOptions === Apollo.skipToken ? baseOptions : { ...defaultOptions, ...baseOptions };
-  return Apollo.useSuspenseQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
+    baseOptions === ApolloReactHooks.skipToken
+      ? baseOptions
+      : { ...defaultOptions, ...baseOptions };
+  return ApolloReactHooks.useSuspenseQuery<GetTransactionsQuery, GetTransactionsQueryVariables>(
     GetTransactionsDocument,
     options
   );

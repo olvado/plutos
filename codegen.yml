@@ -12,3 +12,5 @@ generates:
       withHooks: true
       withComponent: false
       withHOC: false
+      # Apollo Client v4 moved hooks to @apollo/client/react
+      apolloReactHooksImportFrom: "@apollo/client/react"
