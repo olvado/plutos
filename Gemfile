@@ -6,7 +6,7 @@ gem "pg", "~> 1.1"
 gem "puma", ">= 5.0"
 
 # React on Rails with Shakapacker for React frontend
-gem "react_on_rails", "~> 16.0"
+gem "react_on_rails", "~> 16.6"
 gem "shakapacker", "~> 9.5"
 
 # GraphQL API
