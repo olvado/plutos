@@ -10,7 +10,7 @@ gem "react_on_rails", "~> 16.0"
 gem "shakapacker", "~> 9.5"
 
 # GraphQL API
-gem "graphql", "~> 2.3"
+gem "graphql", "~> 2.6"
 
 # Authentication & Authorization
 gem "devise", "~> 5.0"
